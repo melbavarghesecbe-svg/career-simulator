@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Career & Passion Simulator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="app-container">
+  <h1>Career & Passion Simulator</h1>
+  <p class="subtitle">Discover careers that match your mind and heart.</p>
+
+  <!-- INTEREST -->
+  <label>Your main interests (select 1–3)</label>
+  <div class="interest-grid">
+    <button onclick="toggleInterest('software')" class="interest-btn" data-interest="software">Software Engineering</button>
+    <button onclick="toggleInterest('data')" class="interest-btn" data-interest="data">Data & AI</button>
+    <button onclick="toggleInterest('design')" class="interest-btn" data-interest="design">UI/UX & Product</button>
+    <button onclick="toggleInterest('cyber')" class="interest-btn" data-interest="cyber">Cybersecurity</button>
+    <button onclick="toggleInterest('product')" class="interest-btn" data-interest="product">Product Strategy</button>
+    <button onclick="toggleInterest('research')" class="interest-btn" data-interest="research">Research & Academia</button>
+    <button onclick="toggleInterest('cloud')" class="interest-btn" data-interest="cloud">Cloud & DevOps</button>
+    <button onclick="toggleInterest('robotics')" class="interest-btn" data-interest="robotics">Robotics & Hardware</button>
+    <button onclick="toggleInterest('health')" class="interest-btn" data-interest="health">Healthcare Tech</button>
+    <button onclick="toggleInterest('climate')" class="interest-btn" data-interest="climate">Climate & Sustainability</button>
+    <button onclick="toggleInterest('fintech')" class="interest-btn" data-interest="fintech">FinTech & Blockchain</button>
+    <button onclick="toggleInterest('edtech')" class="interest-btn" data-interest="edtech">EdTech & Learning</button>
+  </div>
+  <p id="chosenInterest" class="chosen"></p>
+
+  <!-- SKILLS -->
+  <label>Your Skills</label>
+  <div class="interest-grid">
+    <button onclick="selectSkill('logic', this)" class="skill-btn" data-skill="logic">Logical Thinking</button>
+    <button onclick="selectSkill('creative', this)" class="skill-btn" data-skill="creative">Creativity</button>
+    <button onclick="selectSkill('communication', this)" class="skill-btn" data-skill="communication">Communication</button>
+    <button onclick="selectSkill('math', this)" class="skill-btn" data-skill="math">Math</button>
+    <button onclick="selectSkill('analysis', this)" class="skill-btn" data-skill="analysis">Systems Analysis</button>
+    <button onclick="selectSkill('leadership', this)" class="skill-btn" data-skill="leadership">Leadership</button>
+    <button onclick="selectSkill('empathy', this)" class="skill-btn" data-skill="empathy">Empathy & Coaching</button>
+    <button onclick="selectSkill('storytelling', this)" class="skill-btn" data-skill="storytelling">Storytelling</button>
+  </div>
+  <p id="chosenSkill" class="chosen"></p>
+
+  <!-- HOBBY -->
+  <label>Your Hobby</label>
+  <select id="hobby">
+    <option value="gaming">Gaming</option>
+    <option value="reading">Reading</option>
+    <option value="art">Art / Design</option>
+    <option value="public">Public Speaking</option>
+    <option value="building">Building Stuff</option>
+  </select>
+
+  <!-- PERSONALITY -->
+  <label>Your Personality</label>
+  <select id="personality">
+    <option value="introvert">Introvert</option>
+    <option value="ambivert">Ambivert</option>
+    <option value="extrovert">Extrovert</option>
+  </select>
+
+  <button class="btn primary" onclick="simulateCareer()">Simulate My Future</button>
+
+  <!-- RESULT CARD -->
+  <div class="result-card" id="result"></div>
+</div>
+
+<script src="js/simulator.js"></script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Career Simulator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-container">
+
+  <!-- Page 1: Welcome / Name -->
+  <div class="page" id="page1">
+    <div class="form-card auth-card">
+      <h2 class="auth-title">Career & Passion Simulator</h2>
+      <p class="auth-subtitle">Sign in to explore careers tailored for you.</p>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="loginTab" onclick="switchAuthMode('login')">Sign In</button>
+        <button class="auth-tab" id="signupTab" onclick="switchAuthMode('signup')">Create Account</button>
+      </div>
+
+      <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+        <div class="input-group">
+          <label for="loginEmail">Email address</label>
+          <input type="email" id="loginEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="input-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn primary full-width">Sign In</button>
+        <p class="auth-hint">New here? <span onclick="switchAuthMode('signup')">Create an account</span></p>
+      </form>
+
+      <form id="signupForm" class="auth-form hidden" onsubmit="handleSignUp(event)">
+        <div class="input-row">
+          <div class="input-group">
+            <label for="signupName">Full name</label>
+            <input type="text" id="signupName" placeholder="Your name" required>
+          </div>
+          <div class="input-group">
+            <label for="signupAge">Age</label>
+            <input type="number" id="signupAge" min="13" max="90" placeholder="18" required>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="signupEmail">Email address</label>
+          <input type="email" id="signupEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label for="signupPassword">Password</label>
+            <input type="password" id="signupPassword" placeholder="Create password" required>
+          </div>
+          <div class="input-group">
+            <label for="signupConfirm">Confirm password</label>
+            <input type="password" id="signupConfirm" placeholder="Repeat password" required>
+          </div>
+        </div>
+        <button type="submit" class="btn primary full-width">Create Account</button>
+        <p class="auth-hint">Already have an account? <span onclick="switchAuthMode('login')">Sign in</span></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Page 2: Profile -->
+  <div class="page" id="page2" style="display:none;">
+    <div class="form-card">
+      <h2>Build Your Profile</h2>
+      <p class="section-subtitle">Tell us about your journey so far.</p>
+      <div class="profile-grid">
+        <div class="input-group">
+          <label for="profileName">Preferred Name</label>
+          <input type="text" id="profileName" placeholder="Alex Rivera" required>
+        </div>
+        <div class="input-group">
+          <label for="profileAge">Age</label>
+          <input type="number" id="profileAge" min="13" max="99" placeholder="21" required>
+        </div>
+        <div class="input-group">
+          <label for="profileEducation">Education</label>
+          <input type="text" id="profileEducation" placeholder="B.Sc. Computer Science / Bootcamp" required>
+        </div>
+        <div class="input-group">
+          <label for="profileExperience">Experience Level</label>
+          <select id="profileExperience">
+            <option value="explorer">Student / Explorer</option>
+            <option value="junior">Early Career (0-2 yrs)</option>
+            <option value="mid">Mid-Level (3-5 yrs)</option>
+            <option value="senior">Senior (6+ yrs)</option>
+            <option value="pivot">Career Switch / Pivot</option>
+          </select>
+        </div>
+      </div>
+      <div class="input-group">
+        <label>Current Skills</label>
+        <div class="checkbox-grid">
+          <label><input type="checkbox" value="Frontend Engineering" data-profile-skill> Frontend Engineering</label>
+          <label><input type="checkbox" value="Full-Stack Builds" data-profile-skill> Full-Stack Builds</label>
+          <label><input type="checkbox" value="Python & Data" data-profile-skill> Python & Data</label>
+          <label><input type="checkbox" value="AI & Machine Learning" data-profile-skill> AI & Machine Learning</label>
+          <label><input type="checkbox" value="Cloud & DevOps" data-profile-skill> Cloud & DevOps</label>
+          <label><input type="checkbox" value="Cybersecurity" data-profile-skill> Cybersecurity</label>
+          <label><input type="checkbox" value="Product Strategy" data-profile-skill> Product Strategy</label>
+          <label><input type="checkbox" value="UI/UX Research" data-profile-skill> UI/UX Research</label>
+          <label><input type="checkbox" value="Content Strategy" data-profile-skill> Content Strategy</label>
+          <label><input type="checkbox" value="Marketing & Growth" data-profile-skill> Marketing & Growth</label>
+          <label><input type="checkbox" value="Leadership & Coaching" data-profile-skill> Leadership & Coaching</label>
+          <label><input type="checkbox" value="Project Management" data-profile-skill> Project Management</label>
+        </div>
+        <textarea id="profileSkills" rows="2" placeholder="Other skills or certifications (comma separated)"></textarea>
+      </div>
+      <div class="profile-grid">
+        <div class="input-group">
+          <label>Favourite Hobbies</label>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="Hackathons" data-profile-hobby> Hackathons</label>
+            <label><input type="checkbox" value="Open Source Projects" data-profile-hobby> Open Source Projects</label>
+            <label><input type="checkbox" value="Volunteering" data-profile-hobby> Volunteering</label>
+            <label><input type="checkbox" value="Writing & Blogging" data-profile-hobby> Writing & Blogging</label>
+            <label><input type="checkbox" value="Fitness & Wellness" data-profile-hobby> Fitness & Wellness</label>
+            <label><input type="checkbox" value="Gaming & Esports" data-profile-hobby> Gaming & Esports</label>
+            <label><input type="checkbox" value="Photography & Film" data-profile-hobby> Photography & Film</label>
+            <label><input type="checkbox" value="Public Speaking" data-profile-hobby> Public Speaking</label>
+            <label><input type="checkbox" value="Music Production" data-profile-hobby> Music Production</label>
+            <label><input type="checkbox" value="Travel & Culture" data-profile-hobby> Travel & Culture</label>
+          </div>
+          <textarea id="profileHobbies" rows="2" placeholder="Other things that keep you energised"></textarea>
+        </div>
+        <div class="input-group">
+          <label>Dream Domains</label>
+          <div class="checkbox-grid">
+            <label><input type="checkbox" value="AI & Automation" data-profile-interest> AI & Automation</label>
+            <label><input type="checkbox" value="Sustainable Tech" data-profile-interest> Sustainable Tech</label>
+            <label><input type="checkbox" value="Digital Health" data-profile-interest> Digital Health</label>
+            <label><input type="checkbox" value="Creative Tech & Media" data-profile-interest> Creative Tech & Media</label>
+            <label><input type="checkbox" value="FinTech Innovation" data-profile-interest> FinTech Innovation</label>
+            <label><input type="checkbox" value="Education Futures" data-profile-interest> Education Futures</label>
+            <label><input type="checkbox" value="Gaming & Virtual Worlds" data-profile-interest> Gaming & Virtual Worlds</label>
+            <label><input type="checkbox" value="Space & Robotics" data-profile-interest> Space & Robotics</label>
+            <label><input type="checkbox" value="Social Impact & Policy" data-profile-interest> Social Impact & Policy</label>
+            <label><input type="checkbox" value="Entrepreneurship" data-profile-interest> Entrepreneurship</label>
+          </div>
+          <textarea id="profileInterests" rows="2" placeholder="Add other missions you want to explore"></textarea>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button class="btn secondary" onclick="prevPage(2)">Back</button>
+        <button class="btn primary" onclick="nextPage(2)">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 3: Interests -->
+  <div class="page" id="page3" style="display:none;">
+    <div class="form-card">
+      <h2>Curate Your Interest Zones</h2>
+      <p class="section-subtitle">Pick up to three tracks to unlock tailored paths.</p>
+      <div class="interest-grid">
+        <button onclick="toggleInterest('software')" class="interest-btn" data-interest="software">Software Engineering</button>
+        <button onclick="toggleInterest('data')" class="interest-btn" data-interest="data">Data & AI</button>
+        <button onclick="toggleInterest('design')" class="interest-btn" data-interest="design">UI/UX & Product</button>
+        <button onclick="toggleInterest('cyber')" class="interest-btn" data-interest="cyber">Cybersecurity</button>
+        <button onclick="toggleInterest('product')" class="interest-btn" data-interest="product">Product Strategy</button>
+        <button onclick="toggleInterest('research')" class="interest-btn" data-interest="research">Research & Academia</button>
+        <button onclick="toggleInterest('cloud')" class="interest-btn" data-interest="cloud">Cloud & DevOps</button>
+        <button onclick="toggleInterest('robotics')" class="interest-btn" data-interest="robotics">Robotics & Hardware</button>
+        <button onclick="toggleInterest('health')" class="interest-btn" data-interest="health">Healthcare Tech</button>
+        <button onclick="toggleInterest('climate')" class="interest-btn" data-interest="climate">Climate & Sustainability</button>
+        <button onclick="toggleInterest('fintech')" class="interest-btn" data-interest="fintech">FinTech & Blockchain</button>
+        <button onclick="toggleInterest('edtech')" class="interest-btn" data-interest="edtech">EdTech & Learning</button>
+      </div>
+      <p id="chosenInterest" class="chosen">Selected: None</p>
+      <div class="btn-group">
+        <button class="btn secondary" onclick="prevPage(3)">Back</button>
+        <button class="btn primary" onclick="nextPage(3)">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 4: Skills -->
+  <div class="page" id="page4" style="display:none;">
+    <div class="form-card">
+      <h2>Spotlight Your Super Skills</h2>
+      <p class="section-subtitle">Choose the strength that feels most natural today.</p>
+      <div class="interest-grid">
+        <button onclick="selectSkill('logic', this)" class="skill-btn" data-skill="logic">Logical Thinking</button>
+        <button onclick="selectSkill('creative', this)" class="skill-btn" data-skill="creative">Creativity</button>
+        <button onclick="selectSkill('communication', this)" class="skill-btn" data-skill="communication">Communication</button>
+        <button onclick="selectSkill('math', this)" class="skill-btn" data-skill="math">Math</button>
+        <button onclick="selectSkill('analysis', this)" class="skill-btn" data-skill="analysis">Systems Analysis</button>
+        <button onclick="selectSkill('leadership', this)" class="skill-btn" data-skill="leadership">Leadership</button>
+        <button onclick="selectSkill('empathy', this)" class="skill-btn" data-skill="empathy">Empathy & Coaching</button>
+        <button onclick="selectSkill('storytelling', this)" class="skill-btn" data-skill="storytelling">Storytelling</button>
+      </div>
+      <p id="chosenSkill" class="chosen">Selected: None</p>
+      <div class="btn-group">
+        <button class="btn secondary" onclick="prevPage(4)">Back</button>
+        <button class="btn primary" onclick="nextPage(4)">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 5: Personality & Lifestyle -->
+  <div class="page" id="page5" style="display:none;">
+    <div class="form-card">
+      <h2>Personality Pulse & Lifestyle</h2>
+      <p class="section-subtitle">Choose what energises you or take a 45-second pulse quiz.</p>
+      <div class="profile-grid personality-grid">
+        <div class="input-group">
+          <label for="hobby">Favourite pastime right now</label>
+          <select id="hobby">
+            <option value="gaming">Gaming</option>
+            <option value="reading">Reading</option>
+            <option value="art">Art / Design</option>
+            <option value="public">Public Speaking</option>
+            <option value="building">Building Stuff</option>
+            <option value="wellness">Wellness & Movement</option>
+            <option value="volunteering">Community & Volunteering</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="personality">Personality type (if you know it)</label>
+          <select id="personality">
+            <option value="introvert">Introvert</option>
+            <option value="ambivert">Ambivert</option>
+            <option value="extrovert">Extrovert</option>
+            <option value="analytical">Analytical</option>
+            <option value="visionary">Visionary</option>
+            <option value="grounded">Grounded</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="pulse-quiz">
+        <h3>Quick Personality Pulse</h3>
+        <p>Select the option that resonates the most for each prompt.</p>
+        <div class="quiz-question">
+          <span>How do you prefer to kick off a project?</span>
+          <label><input type="radio" name="quizQ1" value="visionary"> Paint the big picture first.</label>
+          <label><input type="radio" name="quizQ1" value="analytical"> Research and gather data.</label>
+          <label><input type="radio" name="quizQ1" value="grounded"> Organise tasks and logistics.</label>
+        </div>
+        <div class="quiz-question">
+          <span>When collaborating, you usually...</span>
+          <label><input type="radio" name="quizQ2" value="extrovert"> Energise the room and connect dots.</label>
+          <label><input type="radio" name="quizQ2" value="ambivert"> Facilitate balance and keep momentum.</label>
+          <label><input type="radio" name="quizQ2" value="introvert"> Listen deeply then deliver insights.</label>
+        </div>
+        <div class="quiz-question">
+          <span>Pick the phrase that fits best today:</span>
+          <label><input type="radio" name="quizQ3" value="visionary"> "I’m here to imagine what’s next."</label>
+          <label><input type="radio" name="quizQ3" value="analytical"> "I love decoding complex puzzles."</label>
+          <label><input type="radio" name="quizQ3" value="grounded"> "I bring the plan to life consistently."</label>
+        </div>
+        <button class="btn secondary" type="button" onclick="calculatePulsePersonality()">Use quiz result</button>
+        <p id="pulseResult" class="pulse-result"></p>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn secondary" onclick="prevPage(5)">Back</button>
+        <button class="btn primary" onclick="simulateCareer()">Stimulate My Career</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 6: Result Summary -->
+  <div class="page" id="page6" style="display:none;">
+    <div class="form-card result-card" id="resultSummary">
+      <!-- Summary appears here -->
+    </div>
+    <div class="btn-group" style="margin-top:15px;">
+      <button class="btn secondary" onclick="restartSimulator()">Restart</button>
+      <button class="btn primary" onclick="showPage('page7')">See Next Steps</button>
+    </div>
+  </div>
+
+  <!-- Page 7: Deep Dive -->
+  <div class="page" id="page7" style="display:none;">
+    <div class="form-card result-card" id="resultDetail">
+      <!-- Deep dive appears here -->
+    </div>
+    <div class="btn-group" style="margin-top:15px;">
+      <button class="btn secondary" onclick="showPage('page6')">Back to Summary</button>
+      <button class="btn primary" onclick="restartSimulator()">Start Over</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/simulator.js"></script>
+</body>
+</html>
